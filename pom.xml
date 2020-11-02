@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.kimmking</groupId>
-    <artifactId>netty-gateway</artifactId>
+    <artifactId>simple-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>netty-gateway</name>
+    <name>simple-gateway</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -52,19 +52,6 @@
             <artifactId>httpasyncclient</artifactId>
             <version>4.1.4</version>
         </dependency>
-    
-        <!--
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        -->
 
     </dependencies>
 
