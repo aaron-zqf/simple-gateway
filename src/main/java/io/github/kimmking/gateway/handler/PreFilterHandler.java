@@ -7,12 +7,10 @@ import io.github.kimmking.gateway.filter.PreHttpParamFilter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;
-import org.springframework.stereotype.Component;
 
 /**
  * @Created by aaron.zqf 2020/11/3
  */
-@Component
 public class PreFilterHandler extends ChannelInboundHandlerAdapter {
 
     @Override

@@ -28,9 +28,8 @@ public class HttpOutboundHandler {
     private CloseableHttpAsyncClient httpclient;
     private ExecutorService proxyService;
     private String backendUrl;
-    
+
     public HttpOutboundHandler(String backendUrl){
-        this.backendUrl = backendUrl.endsWith("/")?backendUrl.substring(0,backendUrl.length()-1):backendUrl;
         int cores = Runtime.getRuntime().availableProcessors() * 2;
         long keepAliveTime = 1000;
         int queueSize = 2048;
@@ -55,7 +54,7 @@ public class HttpOutboundHandler {
     }
     
     public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx) {
-        final String url = this.backendUrl + fullRequest.uri();
+        final String url = fullRequest.uri();
         proxyService.submit(()->fetchGet(fullRequest, ctx, url));
     }
     
@@ -91,24 +90,9 @@ public class HttpOutboundHandler {
     private void handleResponse(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, final HttpResponse endpointResponse) throws Exception {
         FullHttpResponse response = null;
         try {
-//            String value = "hello,kimmking";
-//            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
-//            response.headers().set("Content-Type", "application/json");
-//            response.headers().setInt("Content-Length", response.content().readableBytes());
-    
-    
             byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
-//            System.out.println(new String(body));
-//            System.out.println(body.length);
-    
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
-            response.headers().set("Content-Type", "application/json");
-            response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
-    
-//            for (Header e : endpointResponse.getAllHeaders()) {
-//                //response.headers().set(e.getName(),e.getValue());
-//                System.out.println(e.getName() + " => " + e.getValue());
-//            } 
+            response.headers().set("Content-Type", "text/html");
         
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,7 +108,7 @@ public class HttpOutboundHandler {
                 }
             }
             ctx.flush();
-            //ctx.close();
+            ctx.close();
         }
         
     }

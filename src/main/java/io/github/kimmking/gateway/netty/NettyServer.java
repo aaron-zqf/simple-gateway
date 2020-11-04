@@ -1,7 +1,6 @@
 package io.github.kimmking.gateway.netty;
 
 import io.github.kimmking.gateway.handler.HandlerInitializer;
-import io.github.kimmking.gateway.inbound.HttpInboundInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
