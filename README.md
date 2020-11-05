@@ -2,7 +2,7 @@
 
 
 
-![](C:\Users\aaron\Desktop\1604590402(1).jpg)
+![](https://github.com/aaron-zqf/simple-gateway/edit/master/summary.jpg)
 
 
 
